@@ -74,15 +74,12 @@ function App() {
         {view === 'dashboard' && <Dashboard user={user} onNavigate={setView} />}
         {view === 'nova-meta' && <NovaMeta user={user} onBack={() => setView('dashboard')} />}
         {view === 'lancar-resultado' && <LancarResultado user={user} onBack={() => setView('dashboard')} />}
-        {view === 'equipes' && <GerenciarEquipes user={user} onBack={() => setView('dashboard')} />}
+        {view === 'equipes' && <GerenciarEquipes onBack={() => setView('dashboard')} />}
       </main>
     </div>
   )
 }
 
-// ============================================
-// COMPONENTE: Login
-// ============================================
 function Login({ onLogin }: { onLogin: (email: string, password: string) => void }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -136,9 +133,6 @@ function Login({ onLogin }: { onLogin: (email: string, password: string) => void
   )
 }
 
-// ============================================
-// COMPONENTE: Header
-// ============================================
 function Header({ user, onLogout }: { user: Usuario; onLogout: () => void }) {
   return (
     <header className="bg-white border-b border-gray-200">
@@ -165,10 +159,7 @@ function Header({ user, onLogout }: { user: Usuario; onLogout: () => void }) {
   )
 }
 
-// ============================================
-// COMPONENTE: Dashboard
-// ============================================
-function Dashboard({ user, onNavigate }: { user: Usuario; onNavigate: (view: any) => void }) {
+function Dashboard({ user, onNavigate }: { user: Usuario; onNavigate: (view: string) => void }) {
   const [metas, setMetas] = useState<Meta[]>([])
   const [resultados, setResultados] = useState<Resultado[]>([])
   const [programas, setProgramas] = useState<Programa[]>([])
@@ -241,9 +232,6 @@ function Dashboard({ user, onNavigate }: { user: Usuario; onNavigate: (view: any
   )
 }
 
-// ============================================
-// COMPONENTE: MetasCard
-// ============================================
 function MetasCard({ metas, onNovaMeta, userTipo }: { metas: Meta[]; onNovaMeta: () => void; userTipo: string }) {
   return (
     <div className="bg-white rounded-lg shadow">
@@ -296,9 +284,6 @@ function MetasCard({ metas, onNovaMeta, userTipo }: { metas: Meta[]; onNovaMeta:
   )
 }
 
-// ============================================
-// COMPONENTE: ResultadosCard
-// ============================================
 function ResultadosCard({ resultados, onLancar }: { resultados: Resultado[]; onLancar: () => void }) {
   return (
     <div className="bg-white rounded-lg shadow">
@@ -344,9 +329,6 @@ function ResultadosCard({ resultados, onLancar }: { resultados: Resultado[]; onL
   )
 }
 
-// ============================================
-// COMPONENTE: NovaMeta
-// ============================================
 function NovaMeta({ user, onBack }: { user: Usuario; onBack: () => void }) {
   const [form, setForm] = useState({
     nome: '',
@@ -496,9 +478,6 @@ function NovaMeta({ user, onBack }: { user: Usuario; onBack: () => void }) {
   )
 }
 
-// ============================================
-// COMPONENTE: LancarResultado
-// ============================================
 function LancarResultado({ user, onBack }: { user: Usuario; onBack: () => void }) {
   const [form, setForm] = useState({
     meta_id: '',
@@ -715,9 +694,6 @@ function LancarResultado({ user, onBack }: { user: Usuario; onBack: () => void }
   )
 }
 
-// ============================================
-// COMPONENTE: GerenciarEquipes
-// ============================================
 function GerenciarEquipes({ onBack }: { onBack: () => void }) {
   const [equipes, setEquipes] = useState<Equipe[]>([])
   const [editando, setEditando] = useState<string | null>(null)
