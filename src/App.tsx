@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase, Usuario, Meta, Resultado, Programa, Equipe } from './lib/supabase'
-import { ExternalLink, Target, TrendingUp, Users, Calendar, AlertCircle, LogOut, CheckCircle, Clock, FileText, Building2, Link } from 'lucide-react'
+import { ExternalLink, Target, TrendingUp, Calendar, AlertCircle, LogOut, Clock, FileText, Building2, Link } from 'lucide-react'
 
 function App() {
   const [user, setUser] = useState<Usuario | null>(null)
@@ -718,7 +718,7 @@ function LancarResultado({ user, onBack }: { user: Usuario; onBack: () => void }
 // ============================================
 // COMPONENTE: GerenciarEquipes
 // ============================================
-function GerenciarEquipes({ user, onBack }: { user: Usuario; onBack: () => void }) {
+function GerenciarEquipes({ onBack }: { onBack: () => void }) {
   const [equipes, setEquipes] = useState<Equipe[]>([])
   const [editando, setEditando] = useState<string | null>(null)
   const [linkTemp, setLinkTemp] = useState('')
