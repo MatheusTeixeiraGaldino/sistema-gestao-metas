@@ -159,7 +159,7 @@ function Header({ user, onLogout }: { user: Usuario; onLogout: () => void }) {
   )
 }
 
-function Dashboard({ user, onNavigate }: { user: Usuario; onNavigate: (view: string) => void }) {
+function Dashboard({ user, onNavigate }: { user: Usuario; onNavigate: (view: 'login' | 'dashboard' | 'nova-meta' | 'lancar-resultado' | 'equipes') => void }) {
   const [metas, setMetas] = useState<Meta[]>([])
   const [resultados, setResultados] = useState<Resultado[]>([])
   const [programas, setProgramas] = useState<Programa[]>([])
